@@ -4,6 +4,7 @@
 int my_printf(const char *fmt, ...);
 int str_len(const char *str);
 int m_print(const char *str, int f_descriptor);
+char* convert(unsigned int, int);
 
 int m_printf(const char *fmt, ...)
 //the printf function
@@ -39,16 +40,16 @@ int m_print(const char *str, int f_descriptor)
 //writes a string to stdout or other nonzero file descriptor
 {
     int r_code = 0;
-    int len = str_len(str); 
+    int len = size_of(str); 
 
     if(f_descriptor > 1)
        f_descriptor = 1;
     else
         f_descriptor = f_descriptor;
 	
-	if((fwrite(f_descriptor, str, len)) != len)
+	if((write(f_descriptor, str, len)) != len)
 	{
-		fwrite(2, "Error occurred", 16);
+		write(2, "Error occurred", 16);
         r_code = 84;
 	}
     
@@ -57,7 +58,8 @@ int m_print(const char *str, int f_descriptor)
 
 int main()
 {
+    const char *str = "Hello World";
     //my_printf("Hello world");
-    m_print("Hello world", 1);
+    m_print(str, 1);
 }
 
