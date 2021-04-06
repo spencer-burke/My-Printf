@@ -1,5 +1,5 @@
-#include <stdio.h>
 #include <stdarg.h>
+#include <unistd.h>
 
 int my_printf(const char *fmt, ...);
 int str_len(const char *str);
@@ -12,7 +12,7 @@ int m_printf(const char *fmt, ...)
     va_list arg_list; 
     int return_code = 0;
     char result[sizeof(fmt)]; 
-    int str_len = strlen(fmt);
+    int strlen = str_len(fmt);
 
     va_start(arg_list, fmt);
     while ( *fmt)
@@ -40,7 +40,7 @@ int m_print(const char *str, int f_descriptor)
 //writes a string to stdout or other nonzero file descriptor
 {
     int r_code = 0;
-    int len = size_of(str); 
+    int len = str_len(str); 
 
     if(f_descriptor > 1)
        f_descriptor = 1;
@@ -56,10 +56,17 @@ int m_print(const char *str, int f_descriptor)
     return r_code;
 }
 
+void basic_print(const char *str, int f_descriptor)
+// just a small method for refining and working on the write syscall **WILL DELETE LATER**
+// supplying a static 11 because it is only supposed to print the "hello world" string
+{
+    write(f_descriptor, str, 11);
+}
+
 int main()
 {
-    const char *str = "Hello World";
+    const char *str = "Hello World\n";
     //my_printf("Hello world");
-    m_print(str, 1);
+    //m_print(str, 1);
 }
 
