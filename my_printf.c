@@ -1,5 +1,6 @@
 #include <stdarg.h>
 #include <unistd.h>
+#include <stdio.h>
 
 int my_printf(const char *fmt, ...);
 int str_len(const char *str);
@@ -30,7 +31,7 @@ int str_len(const char *str)
     int len = 0;
     int i;
 
-    for(int i = 0; i != '\0'; i++)
+    for(int i = 0; str[i] != '\0'; i++)
         len++;
 
     return len;
@@ -65,8 +66,8 @@ void basic_print(const char *str, int f_descriptor)
 
 int main()
 {
-    const char *str = "Hello World\n";
-    //my_printf("Hello world");
-    //m_print(str, 1);
+    const char *str = "Hello World\n\0";
+    char string[13] = "Hello World\n";
+    printf("%d\n", str_len(str));
 }
 
