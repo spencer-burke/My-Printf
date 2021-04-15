@@ -17,11 +17,17 @@ int m_printf(char *fmt, ...)
     va_start(arg_list, fmt);
     while (*fmt)
     {
-       //pass 
+       m_print(fmt, 1, strlen); 
     }
     va_end(arg_list);
 
     return return_code; 
+}
+
+char* convert(unsigned int, int)
+// I have no idea what this does
+{
+
 }
 
 int str_len(const char *str)
@@ -54,7 +60,6 @@ int main()
 {
     const char *str = "Hello World\n";
     char string[13] = "Hello World\n";
-    //basic_print(string, 1, sizeof(string));
     m_print(str, 1, str_len(str));
 }
 
