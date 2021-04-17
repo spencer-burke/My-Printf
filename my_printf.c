@@ -3,7 +3,7 @@
 #include <errno.h>
 
 int my_printf(const char *fmt, ...);
-int str_len(const char *str);
+int m_strlen(const char *str);
 int m_print(const char *str, int f_descriptor, int size);
 char* convert(unsigned int, int);
 
@@ -12,25 +12,25 @@ int m_printf(char *fmt, ...)
 {
     va_list arg_list; 
     int return_code = 0;
-    int strlen = str_len(fmt);
+    int len = m_strlen(fmt);
 
     va_start(arg_list, fmt);
-    while (*fmt)
+    for(int i = 0; i < 4; i++)
     {
-       m_print(fmt, 1, strlen); 
+       m_print(va_arg(arg_list, char*), 1, m_strlen(va_arg(arg_list, char*))); 
     }
     va_end(arg_list);
 
     return return_code; 
 }
 
-char* convert(unsigned int, int)
+char* convert(unsigned int arg, int arg2)
 // I have no idea what this does
 {
 
 }
 
-int str_len(const char *str)
+int m_strlen(const char *str)
 //return the length of the string
 {
     int len = 0;
@@ -60,6 +60,7 @@ int main()
 {
     const char *str = "Hello World\n";
     char string[13] = "Hello World\n";
-    m_print(str, 1, str_len(str));
+    //m_print(str, 1, m_strlen(str));
+    m_printf(string, "Hello ", "World ", "I ", "Variadic\n");
 }
 
