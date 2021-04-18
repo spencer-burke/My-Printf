@@ -7,7 +7,7 @@ int m_strlen(const char *str);
 int m_print(const char *str, int f_descriptor, int size);
 char* convert(unsigned int, int);
 
-int m_printf(char *fmt, ...)
+int m_printf(const char *fmt, ...)
 //the printf function
 {
     va_list arg_list; 
@@ -15,9 +15,10 @@ int m_printf(char *fmt, ...)
     int len = m_strlen(fmt);
 
     va_start(arg_list, fmt);
-    for(int i = 0; i < 4; i++)
+    while(fmt)
     {
-       m_print(va_arg(arg_list, char*), 1, m_strlen(va_arg(arg_list, char*))); 
+       m_print(va_arg(arg_list, const char*), 1, m_strlen(va_arg(arg_list, const char*))); 
+       fmt++;
     }
     va_end(arg_list);
 
