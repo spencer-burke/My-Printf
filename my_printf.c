@@ -15,10 +15,16 @@ int m_printf(const char *fmt, ...)
     int len = m_strlen(fmt);
 
     va_start(arg_list, fmt);
-    while(fmt)
+    for(int i = 0; fmt[i] != '\0'; i++)
     {
-       m_print(va_arg(arg_list, const char*), 1, m_strlen(va_arg(arg_list, const char*))); 
-       fmt++;
+        if(fmt[i] == "%")
+        {
+
+        }
+        else
+        {
+
+        }
     }
     va_end(arg_list);
 
