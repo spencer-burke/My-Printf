@@ -19,14 +19,21 @@ int m_printf(const char *fmt, ...)
     {
         if(fmt[i] == "%")
         {
+            if(fmt[i+1] != '\0')
+            {
+                switch(fmt[i+1])  
+                {
 
+                }
+            }
         }
         else
         {
-
+            m_print(fmt[i], 1, 1);
         }
     }
     va_end(arg_list);
+    m_print('\0', 1, 1);
 
     return return_code; 
 }
