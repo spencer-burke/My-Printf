@@ -23,7 +23,54 @@ int m_printf(const char *fmt, ...)
             {
                 switch(fmt[i+1])  
                 {
-
+                    case 'c':
+                        //code for printing a char
+                        break;
+                    case 'd':
+                        //code for signed decimal integer
+                        break;
+                    case 'i':
+                        //code for signed decimal integer
+                        break;
+                    case 'e':
+                        //code scientific notation (mantissa/exponent) using e character
+                        break'
+                    case 'E':
+                        //code for scientific notation(mantissa/exponent) using E character
+                        break;
+                    case 'g':
+                        //code for shorter %e or %f
+                        break;
+                    case 'G':
+                        //code for shorter %E or %R
+                        break;
+                    case 'o':
+                        //code for signed octal
+                        break;
+                    case 's':
+                        //code for the string of chars
+                        break;
+                    case 'u':
+                        //code for the unsigned decimal integer
+                        break;
+                    case 'x':
+                        //code for the unsigned hexadecimal integer
+                        break;
+                    case 'X':
+                        //code for the unsigend hexadecimal integer (capital letters)
+                        break;
+                    case 'p':
+                        //code for the pointer address
+                        break;
+                    case 'n':
+                        //code for nothing printed(why does this exist???)
+                        break;
+                    case '%':
+                        //code for the % character(why does this also exist???)
+                        break;
+                    default:
+                        //code for default(no clue what to put here yet
+                        break;
                 }
             }
         }
