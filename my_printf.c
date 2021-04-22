@@ -13,18 +13,23 @@ int m_printf(const char *fmt, ...)
     va_list arg_list; 
     int return_code = 0;
     int len = m_strlen(fmt);
+    char err_msg[28] = "[ERROR]: Reached default case"; 
+    char *curr;
+    curr = fmt;
 
     va_start(arg_list, fmt);
-    for(int i = 0; fmt[i] != '\0'; i++)
+    while(curr[0]  != '\0')
     {
-        if(fmt[i] == "%")
+        if(*fmt[i] == "%")
         {
-            if(fmt[i+1] != '\0')
+            if(*fmt[i+1] != '\0')
             {
-                switch(fmt[i+1])  
+                switch(*fmt[i+1])
                 {
                     case 'c':
                         //code for printing a char
+                        char fmt_arg = va_arg(arg_list, char);
+                        m_print(fmt_arg, 1, m_strlen(fmt_arg));
                         break;
                     case 'd':
                         //code for signed decimal integer
@@ -34,7 +39,7 @@ int m_printf(const char *fmt, ...)
                         break;
                     case 'e':
                         //code scientific notation (mantissa/exponent) using e character
-                        break'
+                        break;
                     case 'E':
                         //code for scientific notation(mantissa/exponent) using E character
                         break;
@@ -70,6 +75,7 @@ int m_printf(const char *fmt, ...)
                         break;
                     default:
                         //code for default(no clue what to put here yet
+                        m_print(err_msg, 1, 30);
                         break;
                 }
             }
@@ -78,6 +84,7 @@ int m_printf(const char *fmt, ...)
         {
             m_print(fmt[i], 1, 1);
         }
+        curr++
     }
     va_end(arg_list);
     m_print('\0', 1, 1);
@@ -122,6 +129,7 @@ int main()
     const char *str = "Hello World\n";
     char string[13] = "Hello World\n";
     //m_print(str, 1, m_strlen(str));
-    m_printf(string, "Hello ", "World ", "I ", "Variadic\n");
+    //m_printf(string, "Hello ", "World ", "I ", "Variadic\n");
+    m_printf("Hello worl%c\n", 'd');
 }
 
