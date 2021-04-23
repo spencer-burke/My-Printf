@@ -13,14 +13,15 @@ int m_printf(const char *fmt, ...)
     va_list arg_list; 
     int return_code = 0;
     int len = m_strlen(fmt);
-    char err_msg[28] = "[ERROR]: Reached default case"; 
+    char err_msg[30] = "[ERROR]: Reached default case"; 
     char *curr;
     curr = fmt;
 
     va_start(arg_list, fmt);
     while(curr[0]  != '\0')
     {
-        if(*fmt[i] == "%")
+        //if(*fmt[i] == "%")
+        if(*curr == "%")
         {
             if(*fmt[i+1] != '\0')
             {
@@ -84,7 +85,7 @@ int m_printf(const char *fmt, ...)
         {
             m_print(fmt[i], 1, 1);
         }
-        curr++
+        curr++;
     }
     va_end(arg_list);
     m_print('\0', 1, 1);
