@@ -93,6 +93,18 @@ int m_printf(const char *fmt, ...)
     return return_code; 
 }
 
+void test_iter(const char *fmt)
+{
+    char *curr; 
+    char chars;
+    chars = *fmt; 
+
+    while(chars != '\0')
+    {
+
+    }
+}
+
 char* convert(unsigned int arg, int arg2)
 // I have no idea what this does
 {
