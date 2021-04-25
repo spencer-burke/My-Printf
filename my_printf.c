@@ -6,6 +6,7 @@ int my_printf(const char *fmt, ...);
 int m_strlen(const char *str);
 int m_print(const char *str, int f_descriptor, int size);
 char* convert(unsigned int, int);
+void __putchar(char character);
 
 int m_printf(const char *fmt, ...)
 //the printf function
@@ -14,14 +15,11 @@ int m_printf(const char *fmt, ...)
     int return_code = 0;
     int len = m_strlen(fmt);
     char err_msg[30] = "[ERROR]: Reached default case"; 
-    char *curr;
-    curr = fmt;
 
     va_start(arg_list, fmt);
-    while(curr[0]  != '\0')
+    for(int i = 0; i < len; i++)
     {
-        //if(*fmt[i] == "%")
-        if(*curr == "%")
+        if(fmt[i] == "%")
         {
             if(*fmt[i+1] != '\0')
             {
@@ -85,10 +83,8 @@ int m_printf(const char *fmt, ...)
         {
             m_print(fmt[i], 1, 1);
         }
-        curr++;
     }
     va_end(arg_list);
-    m_print('\0', 1, 1);
 
     return return_code; 
 }
