@@ -6,7 +6,9 @@ int my_printf(const char *fmt, ...);
 int m_strlen(const char *str);
 int m_print(const char *str, int f_descriptor, int size);
 char* convert(unsigned int, int);
-void __putchar(char character);
+void _putchar(char character);
+
+extern int errno;
 
 int m_printf(const char *fmt, ...)
 //the printf function
@@ -127,9 +129,10 @@ int m_print(const char *str, int f_descriptor, int size)
     char error_msg[8] = "[Error]\n";
     if(bytes_written != size)
     {
-        r_code = 84;
-        write(2, error_msg, 8);
+        r_code = errno;
+        write(2, r_code, 8);
     } 
+    
     return r_code;
 }
 
