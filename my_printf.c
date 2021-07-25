@@ -33,7 +33,7 @@ int m_printf(const char *fmt, ...)
                         m_print(fmt_arg, 1, m_strlen(fmt_arg));
                         break;
                     case 'd':
-                        //code for signed decimal integer
+                        //code for unsigned decimal integer
                         break;
                     case 'i':
                         //code for signed decimal integer
