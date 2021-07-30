@@ -10,12 +10,21 @@ char* convert(unsigned int, int);
 void _putchar(char character);
 
 extern int errno;
+/*
+ * Supported Formatting Flags:
+ * d - signed decimal integer
+ * u - unsigned decimal integer
+ * e - signed double without rounding
+ * c - unsigned char
+ * s - char* or string 
+ */
 
 int main()
 {
     const char *str = "Hello World\n";
     char string[13] = "Hello World\n";
-    m_printf(str);
+    char *arg = '1';
+    m_printf("Hello World I am number %s", arg);
 }
 
 int m_printf(const char *fmt, ...)
@@ -25,6 +34,9 @@ int m_printf(const char *fmt, ...)
     int return_code = 0;
     char err_msg[30] = "[ERROR]: Reached default case"; 
     const char *curr;
+    int num_arg;
+    char arg;
+    char *string_arg;
 
     va_start(arg_list, fmt);
     for(curr = fmt; *curr != '\0'; curr++)
@@ -34,8 +46,20 @@ int m_printf(const char *fmt, ...)
         else
         {
             curr++;
-            switch(*curr):
+            switch(*curr)
             {
+                case 'd':
+                    num_arg = va_arg(arg_list, int);
+                    m_print(num_arg, 1, 1); 
+                    break;
+                case 'c':
+                    arg = (char) va_arg(arg_list, int);
+                    m_print(arg, 1, 1);
+                    break;
+                case 's':
+                    string_arg = va_arg(arg_list, char *);
+                    m_print(string_arg, 1, 1); 
+                    break;
             }
         }
     }
