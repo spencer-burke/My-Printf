@@ -4,10 +4,9 @@
 
 int my_printf(const char *fmt, ...);
 int m_printf(const char *fmt, ...);
-int m_strlen(const char *str);
-int m_print(const char *str, int f_descriptor, int size);
+int m_strlen(char *str);
+int m_print(char *str, int f_descriptor, int size);
 char* convert(unsigned int, int);
-void _putchar(char character);
 
 extern int errno;
 /*
@@ -23,8 +22,12 @@ int main()
 {
     const char *str = "Hello World\n";
     char string[13] = "Hello World\n";
-    char *arg = '1';
-    m_printf("Hello World I am number %s", arg);
+    char *arg = "one";
+    char letter = 'a';
+    int num = 1;
+    m_printf("Hello World I am number %s\n", arg);
+    m_printf("Hello World I am number %d\n", num);
+    m_printf("Hello World I am the letter %c\n", letter);
 }
 
 int m_printf(const char *fmt, ...)
@@ -54,11 +57,11 @@ int m_printf(const char *fmt, ...)
                     break;
                 case 'c':
                     arg = (char) va_arg(arg_list, int);
-                    m_print(arg, 1, 1);
+                    m_print(&arg, 1, 1);
                     break;
                 case 's':
                     string_arg = va_arg(arg_list, char *);
-                    m_print(string_arg, 1, 1); 
+                    m_print(string_arg, 1, m_strlen(string_arg)); 
                     break;
             }
         }
@@ -74,7 +77,7 @@ char* convert(unsigned int arg, int arg2)
 
 }
 
-int m_strlen(const char *str)
+int m_strlen(char *str)
 //return the length of the string
 {
     int len = 0;
@@ -86,7 +89,7 @@ int m_strlen(const char *str)
     return len;
 }
 
-int m_print(const char *str, int f_descriptor, int size) 
+int m_print(char *str, int f_descriptor, int size) 
 //writes a string to stdout or other nonzero file descriptor
 {
     int r_code = 0;
