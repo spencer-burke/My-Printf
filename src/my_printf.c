@@ -6,6 +6,7 @@ int my_printf(const char *fmt, ...);
 int m_printf(const char *fmt, ...);
 int m_strlen(char *str);
 int m_print(char *str, int f_descriptor, int size);
+char* m_itoa(int val, char *str, int base);
 char* convert(unsigned int, int);
 
 extern int errno;
@@ -31,7 +32,7 @@ int main()
 }
 
 int m_printf(const char *fmt, ...)
-//the printf function
+// The printf function
 {
     va_list arg_list; 
     int return_code = 0;
@@ -53,7 +54,7 @@ int m_printf(const char *fmt, ...)
             {
                 case 'd':
                     num_arg = va_arg(arg_list, int);
-                    m_print(num_arg, 1, 1); 
+                    m_print(arg, 1, sizeof(arg)); 
                     break;
                 case 'c':
                     arg = (char) va_arg(arg_list, int);
@@ -72,13 +73,13 @@ int m_printf(const char *fmt, ...)
 }
 
 char* convert(unsigned int arg, int arg2)
-// I have no idea what this does
+// This converts an int from one base to another 
 {
 
 }
 
 int m_strlen(char *str)
-//return the length of the string
+// Return the length of the string
 {
     int len = 0;
     int i;
@@ -90,7 +91,7 @@ int m_strlen(char *str)
 }
 
 int m_print(char *str, int f_descriptor, int size) 
-//writes a string to stdout or other nonzero file descriptor
+// writes a string to stdout or other nonzero file descriptor
 {
     int r_code = 0;
     int bytes_written = write(f_descriptor, str, size);
@@ -103,4 +104,10 @@ int m_print(char *str, int f_descriptor, int size)
     } 
     
     return r_code;
+}
+
+char* m_itoa(int val, char *str, int base)
+// Convert the int val into a string with the base specified
+{
+
 }
