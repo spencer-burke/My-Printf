@@ -7,7 +7,6 @@ int m_printf(const char *fmt, ...);
 int m_strlen(char *str);
 int m_print(char *str, int f_descriptor, int size);
 char* m_itoa(int val, char *str, int base);
-char* convert(unsigned int, int);
 
 extern int errno;
 /*
@@ -72,12 +71,6 @@ int m_printf(const char *fmt, ...)
     return return_code; 
 }
 
-char* convert(unsigned int arg, int arg2)
-// This converts an int from one base to another 
-{
-
-}
-
 int m_strlen(char *str)
 // Return the length of the string
 {
@@ -91,7 +84,7 @@ int m_strlen(char *str)
 }
 
 int m_print(char *str, int f_descriptor, int size) 
-// writes a string to stdout or other nonzero file descriptor
+// Writes a string to stdout or other nonzero file descriptor
 {
     int r_code = 0;
     int bytes_written = write(f_descriptor, str, size);
@@ -109,5 +102,25 @@ int m_print(char *str, int f_descriptor, int size)
 char* m_itoa(int val, char *str, int base)
 // Convert the int val into a string with the base specified
 {
+    int temp = val
+    int curr;
+    int length_val = 0;  
+    char digits[16] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
+       
+    while (temp != 0)
+    {
+        temp = temp/10;
+        length_val++;
+    }
+    temp = val;
 
+    for(int i = 0; i < 16;, i++) 
+    {
+        curr = temp % 10;
+        switch(curr) 
+        {
+        }
+    }
+
+    
 }
