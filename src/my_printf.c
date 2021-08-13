@@ -105,7 +105,7 @@ void m_itoa(int val, char *str, int base)
 {
     int temp = val
     int curr;
-    int length_val = 0;  
+    int length_val = 0;
     char digits[16] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
        
     while (temp != 0)
@@ -115,7 +115,7 @@ void m_itoa(int val, char *str, int base)
     }
     temp = val;
 
-    for(int i = 0; i < length_val; i++) 
+    for(int i = 0; i < length_val; i++)
     {
         curr = temp % 10;
         switch(curr) 
@@ -154,8 +154,12 @@ void m_itoa(int val, char *str, int base)
     }
 }
 
-void reverse(char *arg, int size)
+const char* reverse(char *arg, int len)
 // Reverse the string arg
 {
-        
+    char result[len];
+    for (int ii = 0; ii < len; ii++)
+    {
+        result[len-1-ii] = arg[ii];
+    }
 }
