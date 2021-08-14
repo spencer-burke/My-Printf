@@ -154,12 +154,19 @@ void m_itoa(int val, char *str, int base)
     }
 }
 
-const char* reverse(char *arg, int len)
+void reverse(char *arg, int len)
 // Reverse the string arg
 {
+    int counter = 0;
     char result[len];
-    for (int ii = 0; ii < len; ii++)
+    char *result_ptr;  
+    result_ptr = &result;
+
+    for(int ii = len-1; ii > 0; ii++)
     {
-        result[len-1-ii] = arg[ii];
+        result[counter] = arg[ii];
+        counter++;
     }
+
+    arg = result_ptr;
 }
