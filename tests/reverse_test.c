@@ -13,3 +13,17 @@ static char* test_reverse()
 
     return 0;
 }
+
+int main(int argc, char **argv)
+{
+    char *result = test_reverse();
+    if (result != 0)
+    {
+        puts(result);
+    }
+    else
+    {
+        puts("[INFO]: TESTS PASSED");
+    }
+    return result != 0;
+}
