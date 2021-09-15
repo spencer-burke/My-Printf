@@ -81,7 +81,7 @@ int m_print(char *str, int f_descriptor, int size)
 void m_itoa(int val, char *str, int base)
 // Convert the int val into a string with the base specified
 {
-    int temp = val
+    int temp = val;
     int curr;
     int length_val = 0;
     char digits[16] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
@@ -98,42 +98,53 @@ void m_itoa(int val, char *str, int base)
         curr = temp % 10;
         switch(curr) 
         {
-            case digits[0]:
+            case 0:
                 str[i] = digits[0];
                 break; 
-            case digits[1]:
+            case 1:
                 str[i] = digits[1];
                 break;
-            case digits[2]:
+            case 2:
                 str[i] = digits[2];
                 break;
-            case digits[3]:
+            case 3:
                 str[i] = digits[3];
                 break;
-            case digits[4]:
+            case 4:
                 str[i] = digits[4];
                 break;
-            case digits[5]:
+            case 5:
                 str[i] = digits[5];
                 break;
-            case digits[6]:
+            case 6:
                 str[i] = digits[6];
                 break;
-            case digits[7]:
+            case 7:
                 str[i] = digits[7];
                 break;
-            case digits[8]:
+            case 8:
                 str[i] = digits[8];
                 break;
-            case digits[9]:
+            case 9:
                 str[i] = digits[9];
                 break;
         }
     }
 }
 
-void reverse(char *arg, int size)
+void reverse(char *arg, int len)
 // Reverse the string arg
 {
-        
+    int counter = 0;
+    char result[len];
+    char *result_ptr;  
+    result_ptr = &result;
+
+    for(int ii = len-1; ii > 0; ii++)
+    {
+        result[counter] = arg[ii];
+        counter++;
+    }
+
+    arg = result_ptr;
 }
