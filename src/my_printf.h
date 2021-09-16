@@ -138,9 +138,8 @@ void reverse(char *arg, int len)
     int counter = 0;
     char result[len];
     char *result_ptr;  
-    result_ptr = &result;
 
-    for(int ii = len-1; ii > 0; ii++)
+    for(int ii = len-1; ii > 0; ii--)
     {
         result[counter] = arg[ii];
         counter++;

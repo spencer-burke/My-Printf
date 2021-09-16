@@ -8,7 +8,7 @@ char input_string[5] = "hello";
 static char* test_reverse()
 {
     reverse(input_string, 5);
-    int correct = strcmp(correct_string, input_string);
+    int correct = strcmp(input_string, correct_string);
     mu_assert("[ERROR]: input_string != correct_string", correct == 0);
 
     return 0;
