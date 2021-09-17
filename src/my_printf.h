@@ -136,8 +136,7 @@ void reverse(char *arg, int len)
 // Reverse the string arg
 {
     int counter = 0;
-    char result[len];
-    char *result_ptr;  
+    char *result = (char *) malloc(sizeof(char) * len);
 
     for(int ii = len-1; ii > 0; ii--)
     {
@@ -147,3 +146,4 @@ void reverse(char *arg, int len)
 
     arg = result_ptr;
 }
+
