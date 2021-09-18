@@ -144,6 +144,5 @@ void reverse(char *arg, int len)
         counter++;
     }
 
-    arg = result_ptr;
 }
 
