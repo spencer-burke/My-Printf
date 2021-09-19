@@ -7,7 +7,8 @@ int m_printf(const char *fmt, ...);
 int m_strlen(char *str);
 int m_print(char *str, int f_descriptor, int size);
 void reverse(char *arg, int size);
-void m_itoa(int val, char *str, int base);
+char *m_itoa(int val, char *str, int base);
+void
 
 int m_printf(const char *fmt, ...)
 // The printf function
@@ -78,13 +79,19 @@ int m_print(char *str, int f_descriptor, int size)
     return r_code;
 }
 
-void m_itoa(int val, char *str, int base)
+char *m_itoa(int val, char *str, int base)
 // Convert the int val into a string with the base specified
 {
     int temp = val;
     int curr;
     int length_val = 0;
     char digits[16] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
+
+    if (0 == val)
+    {
+        str[0] = '0';
+        str[1] = '\0';
+        
        
     while (temp != 0)
     {
