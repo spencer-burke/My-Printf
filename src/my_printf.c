@@ -76,9 +76,8 @@ int m_strlen(char *str)
 // Return the length of the string
 {
     int len = 0;
-    int i;
 
-    for(int i = 0; str[i] != '\0'; i++)
+    for(int ii = 0; str[ii] != '\0'; ii++)
         len++;
 
     return len;
