@@ -1,29 +1,41 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include "minunit.h"
-#include "../src/my_printf.h"
 
 int tests_run = 0;
 
-void _strrev(char* arg, int len)
+size_t safe_usub (size_t x, size_t y) 
+// safe_usub -- perform safe unsigned subtraction
 {
-    int ii;
-    int j;
-    char c;
+    return x > y ? x - y : y - x ;
+}
 
-    for (ii = 0, j = len-1; ii < j; ii++, j--)
-    {
-        c = arg[ii];
-        arg[ii] = arg[j];
-        arg[j] = c;
-    }
+char* _strrev (char* str, size_t len) 
+// len will be the one more than the visible characters to account for the null terminator
+{
+    if (!str) { return 0; }
+
+    char*  new = malloc( sizeof(char) * (len-1) );
+    size_t index;
+    for (index = 0; index < (len-1); index++) 
+        new[index] = str[ safe_usub(index + 1, (len-1)) ]; 
+    new[index] = 0;
+
+    return new;
 }
 
 static char* test_reverse()
 {
-    char[] reverse = "Reverse";
-    char[] reversed = "esreveR";
-    int comparison = strcmp(reverse, reversed);
-    mu_assert("[ERROR]: string not reversed", comparison == 0);
+    char str[] = "Reverse";
+    char goal[] = "esreveR";
+    char* result;
+
+    result = _strrev(str, 8);
+    printf("New string: %s\n", result);
+    strcmp(result, goal);
+
+    mu_assert("[ERROR]: string not reversed", strcmp(result, goal) == 0);
 }
 
 static char* all_tests()
@@ -44,3 +56,4 @@ int main(int argc, char **argv)
 
     return result != 0;
 }
+
