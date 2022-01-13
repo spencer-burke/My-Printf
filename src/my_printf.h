@@ -1,6 +1,7 @@
 #include <stdarg.h>
 #include <unistd.h>
 #include <errno.h>
+#include <stdlib.h>
 
 int my_printf(const char *fmt, ...);
 int m_printf(const char *fmt, ...);
@@ -8,7 +9,8 @@ int m_strlen(char *str);
 int m_print(char *str, int f_descriptor, int size);
 void reverse(char *arg, int size);
 char *m_itoa(int val, char *str, int base);
-void
+char* _strrev (char* str, size_t len) 
+size_t safe_usub (size_t x, size_t y) 
 
 int m_printf(const char *fmt, ...)
 // The printf function
@@ -153,3 +155,22 @@ void reverse(char *arg, int len)
 
 }
 
+size_t safe_usub (size_t x, size_t y) 
+// safe_usub -- perform safe unsigned subtraction
+{
+    return x > y ? x - y : y - x ;
+}
+
+char* _strrev (char* str, size_t len) 
+// len will be the one more than the visible characters to account for the null terminator
+{
+    if (!str) { return 0; }
+
+    char*  new = malloc( sizeof(char) * (len-1) );
+    size_t index;
+    for (index = 0; index < (len-1); index++) 
+        new[index] = str[ safe_usub(index + 1, (len-1)) ]; 
+    new[index] = 0;
+
+    return new;
+}
