@@ -25,33 +25,33 @@ char* _strrev (char* str, size_t len)
     return new;
 }
 
-static char* test_reverse()
+static char * test_reverse()
 {
     char str[] = "Reverse";
     char goal[] = "esreveR";
     char* result;
 
     result = _strrev(str, 8);
-    printf("New string: %s\n", result);
-    strcmp(result, goal);
+    int val = strcmp(result, goal);
 
-    mu_assert("[ERROR]: string not reversed", strcmp(result, goal) == 0);
+    mu_assert("[ERROR]: string not reversed", val == 0);
+    return 0;
 }
 
-static char* all_tests()
+static char * all_tests()
 {
     mu_run_test(test_reverse);
-} 
+    return 0;
+}
 
 int main(int argc, char **argv)
 {
     char *result = all_tests();
-    if (result != 0) {
+
+    if (result != 0)
         printf("%s\n", result);
-    }
-    else {
+    else
         printf("ALL TESTS PASSED\n");
-    }
     printf("Tests run: %d\n", tests_run);
 
     return result != 0;
