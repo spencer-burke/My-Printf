@@ -9,8 +9,8 @@ int m_strlen(char *str);
 int m_print(char *str, int f_descriptor, int size);
 void reverse(char *arg, int size);
 char *m_itoa(int val, char *str, int base);
-char* _strrev (char* str, size_t len) 
-size_t safe_usub (size_t x, size_t y) 
+char* _strrev (char* str, size_t len);
+size_t safe_usub (size_t x, size_t y);
 
 int m_printf(const char *fmt, ...)
 // The printf function
