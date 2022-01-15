@@ -1,12 +1,12 @@
 #include <stdarg.h>
 #include <unistd.h>
 #include <errno.h>
+#include <"./my_printf.h">
 
 int my_printf(const char *fmt, ...);
 int m_printf(const char *fmt, ...);
 int m_strlen(char *str);
 int m_print(char *str, int f_descriptor, int size);
-void reverse(char *arg, int size);
 void m_itoa(int val, char *str, int base);
 
 extern int errno;
@@ -153,19 +153,3 @@ void m_itoa(int val, char *str, int base)
     }
 }
 
-void reverse(char *arg, int len)
-// Reverse the string arg
-{
-    int counter = 0;
-    char result[len];
-    char *result_ptr;  
-    result_ptr = &result;
-
-    for(int ii = len-1; ii > 0; ii++)
-    {
-        result[counter] = arg[ii];
-        counter++;
-    }
-
-    arg = result_ptr;
-}
