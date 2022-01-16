@@ -3,7 +3,6 @@
 #include <errno.h>
 #include <"./my_printf.h">
 
-int my_printf(const char *fmt, ...);
 int m_printf(const char *fmt, ...);
 int m_strlen(char *str);
 int m_print(char *str, int f_descriptor, int size);
