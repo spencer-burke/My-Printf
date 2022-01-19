@@ -83,10 +83,14 @@ char* _itoa(int val)
 // Convert the int val into the string representation
 // This function is supposed to work with decimal representations only using something else will cause undefined behaviour
 {
+    int digit;
+    char cdigit;
+
     int temp = val;
-    int curr;
+    int curr = 0;
     int length_val = 0;
     char digits[16] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
+    char* result;
     
     // calculate the 'length' of the int for the string
     while (temp != 0)
@@ -97,12 +101,18 @@ char* _itoa(int val)
     temp = val;
 
     // make the new string with length_val+1 to account for null terminator
-    char* result = malloc( sizeof(char) * (length_val+1) )
+    char* reversed = malloc( sizeof(char) * (length_val+1) );
 
     // add all of the digits into the string
     while (temp != 0)
     {
+        digit = temp % 10;
+        cdigit = digit + '0'; 
+        reversed[curr] = cdigit;
+        curr++;
     }
+    result = _strrev(reversed, (length_val + 1));
+    return result;
 }
 
 size_t safe_usub (size_t x, size_t y) 
