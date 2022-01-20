@@ -1,31 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "../src/my_printf.h"
 #include "minunit.h"
 
 int tests_run = 0;
 
-size_t safe_usub (size_t x, size_t y) 
-// safe_usub -- perform safe unsigned subtraction
-{
-    return x > y ? x - y : y - x ;
-}
-
-char* _strrev (char* str, size_t len) 
-// len will be the one more than the visible characters to account for the null terminator
-{
-    if (!str) { return 0; }
-
-    char*  new = malloc( sizeof(char) * (len-1) );
-    size_t index;
-    for (index = 0; index < (len-1); index++) 
-        new[index] = str[ safe_usub(index + 1, (len-1)) ]; 
-    new[index] = 0;
-
-    return new;
-}
-
-static char * test_reverse()
+static char* test_reverse()
 {
     char str[] = "Reverse";
     char goal[] = "esreveR";
@@ -38,9 +19,22 @@ static char * test_reverse()
     return 0;
 }
 
-static char * all_tests()
+static char* test_itoa()
+{
+    char goal[] = "111";
+    int change = 111;
+
+    char* changed = _itoa(change);
+    int val = strcmp(changed, goal);
+
+    mu_assert("[ERROR]: int not converted to ascii", val == 0);
+    return 0;
+}
+
+static char* all_tests()
 {
     mu_run_test(test_reverse);
+    mu_run_test(test_itoa);
     return 0;
 }
 
