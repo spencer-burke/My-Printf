@@ -11,7 +11,6 @@ char* _strrev (char* str, size_t len);
 size_t safe_usub (size_t x, size_t y);
 
 int m_printf(char *fmt, ...)
-// The printf function
 {
     va_list arg_list; 
     int return_code = 0;
@@ -20,6 +19,7 @@ int m_printf(char *fmt, ...)
     int num_arg;
     char arg;
     char *string_arg;
+    double double_arg;
 
     va_start(arg_list, fmt);
     for(curr = fmt; *curr != '\0'; curr++)
@@ -33,7 +33,7 @@ int m_printf(char *fmt, ...)
             {
                 case 'd':
                     num_arg = va_arg(arg_list, int);
-                    m_print(arg, 1, sizeof(arg)); 
+                    m_print(_itoa(num_arg), 1, sizeof(arg)); 
                     break;
                 case 'c':
                     arg = (char) va_arg(arg_list, int);
@@ -82,7 +82,7 @@ int m_print(char *str, int f_descriptor, int size)
 char* _itoa(int val)
 /*
  * Convert the int val into the string representation
- * This function is supposed to work with decimal representations only using something else will cause undefined behaviour
+ * This function is supposed to work with base 10 representations only using something else will cause undefined behaviour
  */
 {
     int digit;
@@ -112,6 +112,17 @@ char* _itoa(int val)
     }
     result = _strrev(reversed, (length_val + 1));
     return result;
+}
+
+char* _dtoa(double val)
+/*
+ * Convert the double val into the string representation
+ * This function is supposed to work with base ten representations only using something else will cause undefined behaviour
+ */
+{
+    // get the left side of the decimal
+    // get the right side of the decimal 
+    return 0;
 }
 
 size_t safe_usub (size_t x, size_t y) 
